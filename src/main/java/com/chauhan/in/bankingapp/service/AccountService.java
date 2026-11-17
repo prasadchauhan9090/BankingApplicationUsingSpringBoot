@@ -1,9 +1,12 @@
 package com.chauhan.in.bankingapp.service;
 
-import com.chauhan.in.bankingapp.entity.Account;
+import com.chauhan.in.bankingapp.dto.AccountDto;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public interface AccountService {
 
 
-    Account createAccount(Account account);
+    AccountDto createAccount(AccountDto accountDto);
 }
