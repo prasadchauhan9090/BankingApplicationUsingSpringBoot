@@ -2,6 +2,7 @@ package com.chauhan.in.bankingapp.service.impl;
 
 import com.chauhan.in.bankingapp.dto.AccountDto;
 import com.chauhan.in.bankingapp.entity.Account;
+import com.chauhan.in.bankingapp.exception.AccountException;
 import com.chauhan.in.bankingapp.mapper.AccountMapper;
 import com.chauhan.in.bankingapp.repository.AccountRepository;
 import com.chauhan.in.bankingapp.service.AccountService;
@@ -31,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
 
        Account account = accountRepository
                .findById(id)
-               .orElseThrow(()->new RuntimeException("ACCOUNT DOES NOT EXISTS"));
+               .orElseThrow(()->new AccountException("ACCOUNT DOES NOT EXISTS"));
         return AccountMapper.mapToAccountDto(account);
     }
 
@@ -40,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
         Account account = accountRepository
                 .findById(id)
-                .orElseThrow(()->new RuntimeException("ACCOUNT DOES NOT EXISTS"));
+                .orElseThrow(()->new AccountException("ACCOUNT DOES NOT EXISTS"));
 
 
         double total = account.getBalance() + amount;
@@ -55,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
 
         Account account = accountRepository
                 .findById(id)
-                .orElseThrow(()->new RuntimeException("ACCOUNT DOES NOT EXISTS"));
+                .orElseThrow(()->new AccountException("ACCOUNT DOES NOT EXISTS"));
 
         if(account.getBalance() < amount) {
 
@@ -89,7 +90,7 @@ public class AccountServiceImpl implements AccountService {
 
         Account account = accountRepository
                 .findById(id)
-                .orElseThrow(()->new RuntimeException("ACCOUNT DOES NOT EXISTS"));
+                .orElseThrow(()->new AccountException("ACCOUNT DOES NOT EXISTS"));
 
 
         accountRepository.deleteById(id);
