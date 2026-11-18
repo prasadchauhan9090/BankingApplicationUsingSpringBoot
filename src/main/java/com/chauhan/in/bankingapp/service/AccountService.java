@@ -3,6 +3,8 @@ package com.chauhan.in.bankingapp.service;
 import com.chauhan.in.bankingapp.dto.AccountDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public interface AccountService {
@@ -16,6 +18,10 @@ public interface AccountService {
 
 
     AccountDto withdraw(Long id, double amount);
+
+    List<AccountDto> getAllAccounts();
+
+    void deleteAccount(Long id);
 
 
 
